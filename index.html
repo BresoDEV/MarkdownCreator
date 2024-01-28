@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0; 
+	}
+
+	html {
+		background-color: #333;
+	}
+
+	.ct {
+		background-color: #666;
+		margin-left: 10%;
+		width: 80%;
+		align-items: center;
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		color: aliceblue;
+		border-radius: 10px;
+	}
+
+	.ct button {
+		background-color: #3c4867;
+		width: 80%;
+		padding: 5px;
+		align-items: center;
+		text-align: center;
+		margin-top: 5px;
+		color: aliceblue;
+		border-radius: 10px;
+		max-height: 60px;
+
+	}
+
+	.ct input {
+		background-color: #333;
+		width: 80%;
+		padding: 3px;
+		align-items: center;
+		text-align: center;
+		margin-top: 5px;
+		color: aliceblue;
+		border-radius: 10px;
+	}
+
+	.ct textarea {
+		background-color: #333;
+		width: 80%;
+		padding: 3px;
+		margin-top: 5px;
+		margin-block-end: 50px;
+		color: aliceblue;
+		border-radius: 10px;
+		resize: none;
+	}
+
+	hr {
+		background-color: aliceblue;
+		color: aliceblue;
+	}
+</style>
+
+<body>
+	<div class="ct">
+		<h1>MarkDown Tool</h1>
+
+		<br>
+		<div id="ww">
+		<button id="btnBR">Inserir Quebra de Linha</button>
+		<button id="btnHR">Inserir Linha</button>
+		</div>
+		<button id="btnRestart">Reiniciar Código</button>
+		<button id="btnFinalizar">Finalizar Código</button>
+		<br><br>
+		<!----------------------------------------->
+		<div id="aa">
+			<br>
+			<p>Titulo</p>
+			<input type="text" id="titulo" placeholder="Texto do Titulo"><br>
+			<button id="btnTitulo">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<div id="ee">
+			<br>
+			<p>SubTitulo</p>
+			<input type="text" id="SubTitulo" placeholder="Texto do SubTitulo"><br>
+			<button id="btnSubTitulo">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<div id="bb">
+			<br>
+			<p>Texto normal</p>
+			<input type="text" id="textonormal" placeholder="Texto"><br>
+			<button id="btntextonormal">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<div id="cc">
+			<br>
+			<p>Link</p>
+			<input type="text" id="linktexto" placeholder="Texto do Link"><br>
+			<input type="text" id="link" placeholder="Link"><br>
+			<button id="btnLink">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<div id="dd">
+			<br>
+			<p>Imagem</p>
+			<input type="text" id="linkimagen" placeholder="Link da Imagem"><br>
+			<button id="btnLinkImagen">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<div id="ff">
+			<br>
+			<p>Codigo</p>
+			<input type="text" id="linkcodigo" placeholder="Codigo"><br>
+			<button id="btnlinkcodigo">Inserir</button>
+			<br><br>
+		</div>
+		<!----------------------------------------->
+		<!----------------------------------------->
+		<div id="zz">
+			<br>
+			<br>
+		</div>
+		<!----------------------------------------->
+
+		<div id="yy">
+			<h3>Codigo</h3><br>
+			<textarea name="" id="textarea" cols="30" rows="10"></textarea><br>
+		</div>
+		2023 &copy; <b>BresoDEV</b>
+		<br>
+		<br>
+
+	</div>
+</body>
+<script>
+	var codigo = 'jj';
+	document.getElementById('yy').style.display = 'none';
+
+
+		//Inserir Quebra Linha
+	document.getElementById('btnBR').addEventListener('click', () => {
+		codigo += '  ';
+	});//Inserir Linha
+	document.getElementById('btnHR').addEventListener('click', () => {
+		codigo += '  ---  ';
+	});
+
+	//titulo
+	document.getElementById('btnTitulo').addEventListener('click', () => {
+		codigo += '#' + document.getElementById('titulo').value + '  ';
+		document.getElementById('titulo').value = '';
+	});
+	//SubTitulo
+	document.getElementById('btnSubTitulo').addEventListener('click', () => {
+		codigo += '##' + document.getElementById('SubTitulo').value + '  ';
+		document.getElementById('SubTitulo').value = '';
+	});
+
+	//texto normal
+	document.getElementById('btntextonormal').addEventListener('click', () => {
+		codigo += document.getElementById('textonormal').value + '  ';
+		document.getElementById('textonormal').value = '';
+	});
+
+	//link
+	document.getElementById('btnLink').addEventListener('click', () => {
+		codigo += '['+document.getElementById('linktexto').value + ']('+document.getElementById('link').value + ')  ';
+		document.getElementById('linktexto').value = '';
+		document.getElementById('link').value = '';
+	});
+//imagem
+	document.getElementById('btnLinkImagen').addEventListener('click', () => {
+		codigo += '![]('+document.getElementById('linkimagen').value + ')  ';
+		document.getElementById('linkimagen').value = '';
+	});
+ 
+
+//codigo
+	document.getElementById('btnlinkcodigo').addEventListener('click', () => {
+		codigo += '```'+document.getElementById('linkcodigo').value + '```   ';
+		document.getElementById('linkcodigo').value = '';
+	});
+ 
+
+
+
+
+
+
+	//Restart
+	document.getElementById('btnRestart').addEventListener('click', () => {
+		codigo = '';
+		document.getElementById('aa').style.display = 'block';
+		document.getElementById('bb').style.display = 'block';
+		document.getElementById('cc').style.display = 'block';
+		document.getElementById('dd').style.display = 'block';
+		document.getElementById('zz').style.display = 'block';
+		document.getElementById('ee').style.display = 'block';
+		document.getElementById('ff').style.display = 'block';
+
+
+		document.getElementById('ww').style.display = 'block';
+		window.scrollTo(0, 0);
+		document.getElementById('yy').style.display = 'none';
+	});
+	//Finalizar
+	document.getElementById('btnFinalizar').addEventListener('click', () => {
+
+		document.getElementById('textarea').innerText = codigo;
+		document.getElementById('aa').style.display = 'none';
+		document.getElementById('bb').style.display = 'none';
+		document.getElementById('cc').style.display = 'none';
+		document.getElementById('dd').style.display = 'none';
+		document.getElementById('ee').style.display = 'none';
+		document.getElementById('ff').style.display = 'none';
+		document.getElementById('zz').style.display = 'none';
+		document.getElementById('ww').style.display = 'none';
+		document.getElementById('yy').style.display = 'block';
+	});
+</script>
+
+</html>
